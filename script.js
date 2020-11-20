@@ -1,3 +1,5 @@
+
+function weatherApp() {
 ////API Weather App
 // const URI = 'http://api.openweathermap.org/data/2.5/weather'
 
@@ -5,15 +7,18 @@
 
 
 ////make this a lets
-const URI = 'http://api.openweathermap.org/data/2.5/weather';
-const KEY = 'e70d740e3c3e8dcc214358600ed578f3'
+// const URI = 'http://api.openweathermap.org/data/2.5/weather';
+const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
 const units = 'imperial';
-const Location = 'Memphis';
+const city = 'Memphis';
+const state = 'TN';
 const sevDay = 'http://api.openweathermap.org/data/2.5/forecast';
 const cnt = 7;
+const currDateAndTime = new Date();
+
 
 ////Fetch for 7 Day Forcast
-fetch(`${sevDay}?q=${Location}&units=${units}&cnt=${cnt}&appid=${KEY}`)
+fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(response => {
     if(!response.ok) {
         throw Error("ERROR");
@@ -22,7 +27,32 @@ fetch(`${sevDay}?q=${Location}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     return response.json();
     })
     .then(data => {
+        const currentTemp = data.list[0].main.temp
+
+
+
+
+
         console.log(data);
+        console.log(data.list);
+        console.log(data.list[0].main.temp);
+
+
+        const myData = `
+
+        <figure id="current-conditions">
+
+                <h1>${city}</h1>
+                <h1>${state}</h1>
+                <h2>${currDateAndTime}</h2>
+
+        </figure>
+
+                `;
+
+            document.querySelector('#weather-app').innerHTML = `${myData}`////'<p>test</p>'////`${html}`
+
+
     })
     .catch(error => {
         console.log(error);
@@ -32,7 +62,7 @@ fetch(`${sevDay}?q=${Location}&units=${units}&cnt=${cnt}&appid=${KEY}`)
 
 
 // ////Fetch for Current Weather
-// fetch(`${URI}?q=${Location}&appid=${KEY}`)
+// fetch(`${URI}?q=${city}&appid=${KEY}`)
 //     .then(response => {
 //     if(!response.ok) {
 //         throw Error("ERROR");
@@ -49,16 +79,16 @@ fetch(`${sevDay}?q=${Location}&units=${units}&cnt=${cnt}&appid=${KEY}`)
 //         // console.log(data.sys.sunset),
 //         // console.log(data.wind),
 //         // console.log(data.weather[0].description)
-//             let locationName = data.name;
+//             let cityName = data.name;
 //             const myData = `
-//                 <h1>${locationName}</h1>
+//                 <h1>${cityName}</h1>
 
 
 //             `;
 
 
 //         // const html = data.data.map(weatherData => {
-//         //     return `<p>Location: ${weatherData.sys.name}</p>`;
+//         //     return `<p>city: ${weatherData.sys.name}</p>`;
 //         // });
 //         // console.log(html);
 //     document.querySelector('#weather-app').innerHTML = `${myData}`////'<p>test</p>'////`${html}`
@@ -66,3 +96,9 @@ fetch(`${sevDay}?q=${Location}&units=${units}&cnt=${cnt}&appid=${KEY}`)
 //     .catch(error => {
 //         console.log(error);
 //     });
+
+
+
+
+}
+weatherApp();
