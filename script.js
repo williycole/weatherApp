@@ -1,7 +1,12 @@
 ////API for Memphis Weather App
+// const URI = 'http://api.openweathermap.org/data/2.5/weather'
+const Location = `Memphis`;
 const URI = 'http://api.openweathermap.org/data/2.5/weather'
+// const sevDay = 'http//api.openweathermap.org/data/2.5/forecast/daily?q={city name}&cnt={cnt}&appid={API key}';
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3'
-fetch(`${URI}?q=Memphis&appid=${KEY}`)
+
+////Fetch for Current Weather
+fetch(`${URI}?q=${Location}&appid=${KEY}`)
     .then(response => {
     if(!response.ok) {
         throw Error("ERROR");
