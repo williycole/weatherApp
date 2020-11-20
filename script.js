@@ -2,8 +2,17 @@
 function weatherApp() {
 ////API Weather App
 // const URI = 'http://api.openweathermap.org/data/2.5/weather'
-
 // const sevenDayKey = 'c16b8d0027d9f401320fa283a1e9f06f';
+
+    /////-------------------->Testing Data
+             // console.log(i)
+             // console.log(data.list[i].main.temp);/// all days temps
+             // console.log(data.list[i].weather[0].description);/// all weather description
+             // console.log(data.list[i].main.feels_like);/// all feels like temps for days
+             // console.log(data.list[i].main.humidity);/// all humidity for days
+             // console.log(data.list[i].wind.speed);/// all wind speed for days
+             // console.log(data.list[i].wind.deg);/// all wind direction
+    /////-------------------------------->
 
 
 ////make this a lets
@@ -27,45 +36,57 @@ fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     return response.json();
     })
     .then(data => {
-        const currentTemp = data.list[0].main.temp
-        for(let i = 0; i < data.list.length; i++){
-            /////-------------------->Testing Data
-                // console.log(i)
-                // console.log(data.list[i].main.temp);/// all days temps
-                // console.log(data.list[i].weather[0].description);/// all weather description
-                // console.log(data.list[i].main.feels_like);/// all feels like temps for days
-                // console.log(data.list[i].main.humidity);/// all humidity for days
-                // console.log(data.list[i].wind.speed);/// all wind speed for days
-                // console.log(data.list[i].wind.deg);/// all wind direction
-            /////-------------------------------->
-
-
-
-        }
-
-
-
-        /////-------------------->Testing Data
-            // console.log(data);
-            console.log(data.list);
-            // console.log(data.list[0].main.temp);
-        /////-------------------------------->
-
+        console.log(data.list);
         const myData = `
 
-        <figure id="current-conditions">
-
+        <figure class="current-conditions">
                 <h1>${city}</h1>
                 <h1>${state}</h1>
                 <h2>${currDateAndTime}</h2>
-
         </figure>
 
-                `;
+<!--
+        <section id="seven-days-section">
+            <figure class="current-conditions-container">
+                    <h1>${temp}</h1>
+                    <h2>${temp}</h2>
+                    <h2>${weatherDescription}</h2>
+                    <ul class="weather-misc-data">
+                        <li class="weather-data-misc-item">${feelsLike}</li>
+                        <li class="weather-data-misc-item">${humidity}</li>
+                        <li class="weather-data-misc-item">${windSpeed}</li>
+                        <li class="weather-data-misc-item">${windDirection}deg</li>
+                    </ul>
+            </figure>
+        </section>
+-->
+        `;
+        document.querySelector('#weather-app').innerHTML = `${myData}`////'<p>test</p>'////`${html}`
+        for(let i = 0; i < data.list.length; i++){
+         var temp = data.list[i].main.temp;/// all days temps
+         var weatherDescription = data.list[i].weather[0].description;/// all weather description
+         var feelsLike = Math.trunc(data.list[i].main.feels_like);/// all feels like temps for days
+         var humidity = data.list[i].main.humidity;/// all humidity for days
+         var windSpeed = data.list[i].wind.speed;/// all wind speed for days
+         var windDirection = data.list[i].wind.deg;/// all wind direction
 
-            document.querySelector('#weather-app').innerHTML = `${myData}`////'<p>test</p>'////`${html}`
+         const sevDayData = `
 
+                 <figure class="current-conditions-container">
+                         <h1>${temp}</h1>
+                         <h2>${temp}</h2>
+                         <h2>${weatherDescription}</h2>
+                         <ul class="weather-misc-data">
+                             <li class="weather-data-misc-item">${feelsLike}</li>
+                             <li class="weather-data-misc-item">${humidity}</li>
+                             <li class="weather-data-misc-item">${windSpeed}</li>
+                             <li class="weather-data-misc-item">${windDirection}deg</li>
+                         </ul>
+                 </figure>
 
+             `;
+             document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', sevDayData);
+        }
     })
     .catch(error => {
         console.log(error);
