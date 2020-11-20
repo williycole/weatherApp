@@ -28,15 +28,17 @@ fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     })
     .then(data => {
         const currentTemp = data.list[0].main.temp
-
         for(let i = 0; i < data.list.length; i++){
-            // console.log(i)
-            // console.log(data.list[i].main.temp);/// all days temps
-            // console.log(data.list[i].weather[0].description);/// all weather description
-            // console.log(data.list[i].main.feels_like);/// all feels like temps for days
-            // console.log(data.list[i].main.humidity);/// all humidity for days
-            // console.log(data.list[i].wind.speed);/// all wind speed for days
-            // console.log(data.list[i].wind.deg);/// all wind direction
+            /////-------------------->Testing Data
+                // console.log(i)
+                // console.log(data.list[i].main.temp);/// all days temps
+                // console.log(data.list[i].weather[0].description);/// all weather description
+                // console.log(data.list[i].main.feels_like);/// all feels like temps for days
+                // console.log(data.list[i].main.humidity);/// all humidity for days
+                // console.log(data.list[i].wind.speed);/// all wind speed for days
+                // console.log(data.list[i].wind.deg);/// all wind direction
+            /////-------------------------------->
+
 
 
         }
@@ -44,9 +46,9 @@ fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
 
 
         /////-------------------->Testing Data
-        // console.log(data);
-        console.log(data.list);
-        // console.log(data.list[0].main.temp);
+            // console.log(data);
+            console.log(data.list);
+            // console.log(data.list[0].main.temp);
         /////-------------------------------->
 
         const myData = `
