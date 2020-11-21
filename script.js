@@ -2,18 +2,28 @@ function weatherApp() {
  ////API Weather App
  const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
  const units = 'imperial';
- const city = 'Memphis';
- // const city = document.querySelector('#user-city-input').value;
- ////use user input to pick city
- ////account for default and wrong city, if error alert user and put required on input don't forget lables
- const state = 'TN';
- ////const state = document.querySelector('#user-state-input').value
- ////use scroll list to pick variable
 const sevDay = 'http://api.openweathermap.org/data/2.5/forecast';
 const cnt = 7;
 const currDateAndTime = new Date();
 
-////Fetch for 7 Day Forcast
+
+const city = document.querySelector('#city').value;
+console.log(city);
+const state = document.querySelector('#state').value
+console.log(state)
+
+
+////need to possibly get rid of prevent default and add in local storage handler as well as default location setting for on load
+///also need to save local storage when reload
+
+//Prevent Default
+document.querySelector('#select-location-button').addEventListener("click", function(event){
+    event.preventDefault()
+});
+
+
+
+//Fetch for 7 Day Forcast
 fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(response => {
         if(!response.ok) {
