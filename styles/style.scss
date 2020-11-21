@@ -1,0 +1,73 @@
+/* ******************************************
+ *******************************************
+ *
+ *
+ *
+ * This document contains all the
+ * styling for the game.
+ *
+ *
+ /*******************************************
+ *******************************************
+ *
+ *
+ * 00. common, reset css, colors  & JS Style
+ * 01. sectons
+ * 02.
+ * 03.
+ * 04.
+ * 05.
+ *
+/*****************************
+ *   00. common & reset css
+ *****************************
+ *
+ */
+////-----Reset-----
+
+* {
+    padding:0;
+    margin: 0;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/*****************************
+ *   00. sections
+ *****************************
+ *
+ */
+
+#current-conditions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#seven-days-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+////Desktop View
+@media (min-width:768px){
+    #seven-days-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+.seven-day-conditions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
