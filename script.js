@@ -12,7 +12,7 @@ console.log(city);
 const state = document.querySelector('#state').value
 console.log(state)
 
-
+/////-----------------pick up here
 ////need to possibly get rid of prevent default and add in local storage handler as well as default location setting for on load
 ///also need to save local storage when reload
 
