@@ -1,9 +1,14 @@
 function weatherApp() {
-////API Weather App
-const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
-const units = 'imperial';
-const city = 'Memphis';
-const state = 'TN';
+ ////API Weather App
+ const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
+ const units = 'imperial';
+ const city = 'Memphis';
+ // const city = document.querySelector('#user-city-input').value;
+ ////use user input to pick city
+ ////account for default and wrong city, if error alert user and put required on input don't forget lables
+ const state = 'TN';
+ ////const state = document.querySelector('#user-state-input').value
+ ////use scroll list to pick variable
 const sevDay = 'http://api.openweathermap.org/data/2.5/forecast';
 const cnt = 7;
 const currDateAndTime = new Date();
@@ -20,9 +25,9 @@ fetch(`${sevDay}?q=${city}&${state}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(data => {
         console.log(data.list);
         const myData = `
-            <figure id="current-conditions">
-                <h1>${city}</h1>
-                <h1>${state}</h1>
+        <figure id="current-conditions">
+        <h1>${city}</h1>
+        <h1>${state}</h1>
                 <p>${currDateAndTime}</p>
             </figure>
         `;
