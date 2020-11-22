@@ -1,11 +1,11 @@
 ////API Weather App data and Fetch variables
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
 const URL = 'http://api.openweathermap.org/data/2.5/forecast';
-if (location.protocol === 'http:') {
-    url = 'http://api.openweathermap.org/data/2.5/forecast';
-} else {
-    url = 'http://api.openweathermap.org/data/2.5/forecast';
-}
+// if (location.protocol === 'http:') {
+//     url = 'http://api.openweathermap.org/data/2.5/forecast';
+// } else {
+//     url = 'http://api.openweathermap.org/data/2.5/forecast';
+// }
 const units = 'imperial';
 const cnt = 7;
 const currDateAndTime = new Date();
@@ -15,7 +15,7 @@ let currentState = document.querySelector('#default-state').innerHTML;
 
 ///Fetch for 7 Day Forcast
 
-function weatherData() {
+function weatherApp() {
 fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(response => {
         if(!response.ok) {
@@ -25,9 +25,6 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
         return response.json();
     })
     .then(data => {
-        // console.log(data.list);
-        console.log(data);
-        console.log(data.city.name);
         for(let i = 0; i < data.list.length; i++){
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
@@ -49,28 +46,24 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
             `;
             document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', URLData);
         }
-        ////Prevent Default
-        document.querySelector('#select-location-button').addEventListener("click", function(event){
-            event.preventDefault()
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
-weatherData();
+      ;
+
+
 
 
 /////Currently working here
 let updateButton = document.querySelector('#select-location-button');
 updateButton.addEventListener('click', () => {
+      // console.log(data.list);
+      console.log(data);
+      console.log(data.city.name)
     let updatedCity = document.querySelector('#city').value;
     let updatedState = document.querySelector('#state').value;
     let sevenDaysSection = document.querySelector('#seven-days-section');
-    console.log(city),console.log(state);
+    sevenDaysSection.remove();
     document.querySelector('#default-city').textContent = updatedCity;
     document.querySelector('#default-state').textContent = updatedState;
-    sevenDaysSection.remove();
+
 
      ////Updates Dom With New Seven Day Section
     let newSevenDaySection = `
@@ -84,8 +77,36 @@ updateButton.addEventListener('click', () => {
 
 
     ////reFetch Data
-    weatherData();
+    weatherApp();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ////Prevent Default
+        document.querySelector('#select-location-button').addEventListener("click", function(event){
+            event.preventDefault()
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+weatherApp();
+
+
+
 
 
 /////-----------------pick up here
