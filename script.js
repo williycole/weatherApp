@@ -7,8 +7,6 @@ const cnt = 7;
 let currentCity  = document.querySelector('#default-city').innerHTML;
 let currentState = document.querySelector('#default-state').innerHTML;
 
-
-
 ///Fetch for 7 Day Forcast
 function weatherApp() {
 fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
@@ -48,8 +46,9 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
 }
 weatherApp();
 
+
 let updateButton = document.querySelector('#select-location-button');
-updateButton.addEventListener('click', (event) => {
+updateButton.addEventListener('click', function(event) {
     let updatedCity = document.querySelector('#city').value;
     let updatedState = document.querySelector('#state').value;
     let sevenDaysSection = document.querySelector('#seven-days-section');
@@ -63,20 +62,17 @@ updateButton.addEventListener('click', (event) => {
         </section>
     `;
     const appendNewSevenDaySec = document.querySelector('#current-weather-section');
-    appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection);
-    ////clear cache from fetch here here???
-    ////reFetch Data
+    appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
+    ////call fetch Data
     weatherApp();
-
-    document.getElementById('select-location-button').addEventListener("click", function(event) {
-         event.preventDefault();
-    })
-});
-////why wont this work......
-
-document.getElementById('select-location-button').addEventListener("click", function(event) {
+    // document.getElementById('select-location-button').addEventListener("click", function(event) {
+    //      event.preventDefault();
+    // })
+    console.log('test')
     event.preventDefault();
-})
+});
+////prevent default not working?
+
 
 
 
