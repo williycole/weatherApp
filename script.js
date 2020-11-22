@@ -8,18 +8,21 @@ let currentCity  = document.querySelector('#default-city').innerHTML;
 let currentState = document.querySelector('#default-state').innerHTML;
 
 
-///Fetch for 7 Day Forcast ///// function weatherApp() {
-let weatherData = () => fetch(`${sevDay}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
+///Fetch for 7 Day Forcast
+
+function weatherData() {
+fetch(`${sevDay}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(response => {
         if(!response.ok) {
             throw Error("ERROR");
         }
-        console.log(response);
+        // console.log(response);
         return response.json();
     })
     .then(data => {
         // console.log(data.list);
         console.log(data);
+        console.log(data.city.name);
         for(let i = 0; i < data.list.length; i++){
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
@@ -49,8 +52,7 @@ let weatherData = () => fetch(`${sevDay}?q=${currentCity}&${currentState}&units=
     .catch(error => {
         console.log(error);
     });
-    ////weather gif function
-//// }//// weatherApp();
+}
 weatherData();
 
 
@@ -63,10 +65,9 @@ updateButton.addEventListener('click', () => {
     console.log(city),console.log(state);
     document.querySelector('#default-city').textContent = updatedCity;
     document.querySelector('#default-state').textContent = updatedState;
-
     sevenDaysSection.remove();
 
-    ////Updates Dom With New Seven Day Section
+     ////Updates Dom With New Seven Day Section
     let newSevenDaySection = `
         <section id="seven-days-section">
 
@@ -75,6 +76,7 @@ updateButton.addEventListener('click', () => {
     const appendNewSevenDaySec = document.querySelector('#current-weather-section');
     appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
     ////clear cache from fetch here here
+
 
     ////reFetch Data
     weatherData();
