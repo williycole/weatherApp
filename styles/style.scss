@@ -88,7 +88,8 @@ ul {
 @media (min-width:768px){
     #seven-days-section {
         display: flex;
-        flex-direction: row;
+        flex-direction: row-reverse;////have to reverse flex
+        flex-wrap: wrap-reverse;
         justify-content: center;
         align-items: center;
     }

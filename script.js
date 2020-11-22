@@ -21,8 +21,8 @@ const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
 const URL = 'https://api.openweathermap.org/data/2.5/forecast';
 const units = 'imperial';
 const cnt = 7;
-let currentCity  = ['Denver','Memphis', 'TEST']
-let currentState = ['CO','TN', 'TEST']
+let currentCity  = ['Memphis','Denver','Southaven', 'TEST']
+let currentState = ['TN','CO','MS', 'TEST']
 
 ///Fetch for 7 Day Forcast
 function weatherApp() {
@@ -35,7 +35,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         return response.json();
     })
     .then(data => {
-        console.log(data)
+        // console.log(data)////FOR TESTING
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}</h1>
@@ -79,9 +79,36 @@ let updateButton = document.querySelector('#select-location-button');
 updateButton.addEventListener('click', function(event) {
     // currentDivNumber ++;
     let oldCurrentData = document.querySelector('#current-data');
-    oldCurrentData.remove();
     let updatedCity = document.querySelector('#city').value;
     let updatedState = document.querySelector('#state').value;
+    /*
+        if(updatedCity === not a city || updatedState === not a state) {
+            update dom user and do not push or change anything
+        } else {
+            oldCurrentData.remove();
+            currentCity.unshift(updatedCity)
+            console.log(currentCity);////FOR TESTING
+            currentState.unshift(updatedState)
+            console.log(currentState);////FOR TESTING
+            let sevenDaysSection = document.querySelector('#seven-days-section');
+            ////Removes and Updates Dom With New Seven Day Section
+            sevenDaysSection.remove();
+            let newSevenDaySection = `
+                <section id="seven-days-section">
+                </section>
+            `;
+            const appendNewSevenDaySec = document.querySelector('#current-weather-section');
+            appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
+            ////call fetch Data
+             weatherApp();
+            // document.getElementById('select-location-button').addEventListener("click", function(event) {
+            //      event.preventDefault();
+            // })
+            console.log('test')////FOR TESTING
+            event.preventDefault();
+        }
+    */
+    oldCurrentData.remove();
     currentCity.unshift(updatedCity)
     console.log(currentCity);////FOR TESTING
     currentState.unshift(updatedState)
