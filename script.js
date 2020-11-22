@@ -47,11 +47,47 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
             document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', URLData);
         }
         /////Currently working here
+        // let updateButton = document.querySelector('#select-location-button');
+        // updateButton.addEventListener('click', () => {
+        //         // console.log(data.list);
+        //         console.log(data);
+        //         console.log(data.city.name)
+        //     let updatedCity = document.querySelector('#city').value;
+        //     let updatedState = document.querySelector('#state').value;
+        //     let sevenDaysSection = document.querySelector('#seven-days-section');
+        //     sevenDaysSection.remove();
+        //     document.querySelector('#default-city').textContent = updatedCity;
+        //     document.querySelector('#default-state').textContent = updatedState;
+
+        //     ////Updates Dom With New Seven Day Section
+        //     let newSevenDaySection = `
+        //         <section id="seven-days-section">
+
+        //         </section>
+        //     `;
+        //     const appendNewSevenDaySec = document.querySelector('#current-weather-section');
+        //     appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
+        //     ////clear cache from fetch here here???
+
+
+        //     ////reFetch Data
+        //     weatherApp();
+        // });
+        ////Prevent Default
+        document.querySelector('#select-location-button').addEventListener("click", function(event){
+            event.preventDefault()
+        });
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}
+weatherApp();
+
         let updateButton = document.querySelector('#select-location-button');
         updateButton.addEventListener('click', () => {
                 // console.log(data.list);
-                console.log(data);
-                console.log(data.city.name)
+
             let updatedCity = document.querySelector('#city').value;
             let updatedState = document.querySelector('#state').value;
             let sevenDaysSection = document.querySelector('#seven-days-section');
@@ -73,19 +109,6 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
             ////reFetch Data
             weatherApp();
         });
-        ////Prevent Default
-        document.querySelector('#select-location-button').addEventListener("click", function(event){
-            event.preventDefault()
-        });
-    })
-    .catch(error => {
-        console.log(error);
-    });
-}
-weatherApp();
-
-
-
 
 
 /////-----------------pick up here
