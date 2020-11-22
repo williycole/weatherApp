@@ -1,7 +1,12 @@
 ////API Weather App data and Fetch variables
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
+const URL = 'http://api.openweathermap.org/data/2.5/forecast';
+if (location.protocol === 'http:') {
+    url = 'http://api.openweathermap.org/data/2.5/forecast';
+} else {
+    url = 'http://api.openweathermap.org/data/2.5/forecast';
+}
 const units = 'imperial';
-const sevDay = 'http://api.openweathermap.org/data/2.5/forecast';
 const cnt = 7;
 const currDateAndTime = new Date();
 let currentCity  = document.querySelector('#default-city').innerHTML;
@@ -11,7 +16,7 @@ let currentState = document.querySelector('#default-state').innerHTML;
 ///Fetch for 7 Day Forcast
 
 function weatherData() {
-fetch(`${sevDay}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
+fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=${KEY}`)
     .then(response => {
         if(!response.ok) {
             throw Error("ERROR");
@@ -30,7 +35,7 @@ fetch(`${sevDay}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appi
             const humidity = data.list[i].main.humidity;/// all humidity for days
             const windSpeed = data.list[i].wind.speed;/// all wind speed for days
             const windDirection = data.list[i].wind.deg;/// all wind direction
-            const sevDayData = `
+            const URLData = `
                 <figure class="seven-day-conditions-container">
                     <h1>${temp} F</h1>
                     <h2>${weatherDescription}</h2>
@@ -42,7 +47,7 @@ fetch(`${sevDay}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appi
                     </ul>
                 </figure>
             `;
-            document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', sevDayData);
+            document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', URLData);
         }
         ////Prevent Default
         document.querySelector('#select-location-button').addEventListener("click", function(event){
