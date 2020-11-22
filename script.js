@@ -24,6 +24,13 @@ const cnt = 7;
 let currentCity  = ['Memphis','Denver','Southaven', 'TEST']
 let currentState = ['TN','CO','MS', 'TEST']
 
+/////Time Conversion
+////UTC
+// const UTC = new Date.UTC(hours:);
+// console.log(UTC)
+
+
+
 ///Fetch for 7 Day Forcast
 function weatherApp() {
 fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&appid=${KEY}`)
@@ -35,7 +42,9 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         return response.json();
     })
     .then(data => {
-        // console.log(data)////FOR TESTING
+        console.log(data)////FOR TESTING
+        let timeZoneOffset = data.city.timezone;
+        console.log(timeZoneOffset);
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}</h1>
