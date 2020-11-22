@@ -1,6 +1,6 @@
 ////API Weather App data and Fetch variables
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3';
-const URL = 'http://api.openweathermap.org/data/2.5/forecast';
+const URL = 'https://api.openweathermap.org/data/2.5/forecast';
 // if (location.protocol === 'http:') {
 //     url = 'http://api.openweathermap.org/data/2.5/forecast';
 // } else {
@@ -25,7 +25,7 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
         return response.json();
     })
     .then(data => {
-        for(let i = 0; i < data.list.length; i++){
+        for(let i = 0; i < data.list.length; i++) {
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
             const feelsLike = Math.trunc(data.list[i].main.feels_like);/// all feels like temps for days
@@ -46,54 +46,33 @@ fetch(`${URL}?q=${currentCity}&${currentState}&units=${units}&cnt=${cnt}&appid=$
             `;
             document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', URLData);
         }
-      ;
+        /////Currently working here
+        let updateButton = document.querySelector('#select-location-button');
+        updateButton.addEventListener('click', () => {
+                // console.log(data.list);
+                console.log(data);
+                console.log(data.city.name)
+            let updatedCity = document.querySelector('#city').value;
+            let updatedState = document.querySelector('#state').value;
+            let sevenDaysSection = document.querySelector('#seven-days-section');
+            sevenDaysSection.remove();
+            document.querySelector('#default-city').textContent = updatedCity;
+            document.querySelector('#default-state').textContent = updatedState;
+
+            ////Updates Dom With New Seven Day Section
+            let newSevenDaySection = `
+                <section id="seven-days-section">
+
+                </section>
+            `;
+            const appendNewSevenDaySec = document.querySelector('#current-weather-section');
+            appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
+            ////clear cache from fetch here here???
 
 
-
-
-/////Currently working here
-let updateButton = document.querySelector('#select-location-button');
-updateButton.addEventListener('click', () => {
-      // console.log(data.list);
-      console.log(data);
-      console.log(data.city.name)
-    let updatedCity = document.querySelector('#city').value;
-    let updatedState = document.querySelector('#state').value;
-    let sevenDaysSection = document.querySelector('#seven-days-section');
-    sevenDaysSection.remove();
-    document.querySelector('#default-city').textContent = updatedCity;
-    document.querySelector('#default-state').textContent = updatedState;
-
-
-     ////Updates Dom With New Seven Day Section
-    let newSevenDaySection = `
-        <section id="seven-days-section">
-
-        </section>
-    `;
-    const appendNewSevenDaySec = document.querySelector('#current-weather-section');
-    appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
-    ////clear cache from fetch here here
-
-
-    ////reFetch Data
-    weatherApp();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ////reFetch Data
+            weatherApp();
+        });
         ////Prevent Default
         document.querySelector('#select-location-button').addEventListener("click", function(event){
             event.preventDefault()
