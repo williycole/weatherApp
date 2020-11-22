@@ -40,6 +40,24 @@
  *
  */
 
+ul {
+    list-style: none;
+    text-align: center;
+}
+
+#user-location-selection-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#seleciton-container {
+    display: flex;
+    flex-direction: row;
+}
+
 #current-conditions {
     display: flex;
     flex-direction: column;
@@ -53,6 +71,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.seven-day-conditions-container {
+    padding: 1rem;
+    margin: 1rem;
+    color: white;
+    background: grey;
 }
 
 
