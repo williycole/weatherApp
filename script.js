@@ -1,10 +1,8 @@
 /////-----------------Working bugs/fixes list
-////prevent default not working?
-////get prevent default to work
-////see about pushing data from input to object and object be where the fetch gets data from, this would get around the stupid prevent default if you save the object to local storage
+////prevent default not working, get it to work?
 ////also need to save local storage when reload
 ////also need to add in units for wind direction
-////also need to add weather gif function
+////also need to add weather gif function or icons
 ////add in errors for form control
 ////Set Time
 //// const currDateAndTime = new Date();
@@ -23,15 +21,6 @@ const units = 'imperial';
 const cnt = 7;
 let currentCity  = ['Memphis','Denver','Southaven', 'TEST']
 let currentState = ['TN','CO','MS', 'TEST']
-
-
-
-
-
-
-
-
-
 ///Fetch for 7 Day Forcast
 function weatherApp() {
 fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&appid=${KEY}`)
@@ -43,41 +32,59 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         return response.json();
     })
     .then(data => {
+        const offSet = data.city.timezone /3600;
+        console.log(offSet)
+        const utcHours = new Date().getUTCHours();
+        console.log(utcHours);
+        const timeCorrection =  (utcHours) + (offSet);
+        console.log(timeCorrection);
+
+        if (timeCorrection >= 18 || timeCorrection <= 6) {
+            console.log('its night')
+            // document.body.style.background = "purple";
+            document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
+        } else {
+            console.log('its day')
+            // document.body.style.background = "yellow";
+            document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
+        }
+
+
+        const currentWeatherDescription = data.list[0].weather[0].description.toUpperCase();/// all weather description
+        const currentWeatherIcon = data.list[0].weather[0].icon;/// all weather description
         console.log(data)////FOR TESTING
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}</h1>
                 <h1 id="default-state">${currentState[0]}</h1>
-                <h1>${Math.trunc(data.list[0].main.temp)} F</h1>
+                <h1>${Math.trunc(data.list[0].main.temp)}&#8457</h1>
+                <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="weather-icons">
+                    <p>${currentWeatherDescription}</p>
+                </img>
                 <p id="time"></p>
             </di>
         `;
         document.querySelector('#current-conditions').insertAdjacentHTML('afterbegin', currentData);
-        /////UTC Time Conversion
-        // const correctedTime = ((new Date().getHours() -12) + ':' + (new Date().getMinutes()) + (-6) + data.city.timezone);
-        // console.log(correctedTime);////FOR TESTING
-        // const timeContainer =document.querySelector('#time');
-        // console.log(timeContainer)////FOR TESTING
-        // timeContainer.innerHTML = correctedTime;
-
-        for(let i = 0; i < data.list.length; i++) {
-            //   console.log(temp), console.log(data.list[i].dt_txt); ////FOR TESTING
-            //   console.log(data.list[i]) ////FOR TESTING
+        for(let i = 1; i < data.list.length; i++) {
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
+            const weatherIcon = data.list[i].weather[0].icon;/// all weather description
+            // const loadIcon = `http://openweathermap.org/img/w/${weatherIcon}.png`;
             const feelsLike = Math.trunc(data.list[i].main.feels_like);/// all feels like temps for days
             const humidity = data.list[i].main.humidity;/// all humidity for days
             const windSpeed = data.list[i].wind.speed;/// all wind speed for days
             const windDirection = data.list[i].wind.deg;/// all wind direction
             const sevenDayData = `
                 <figure class="seven-day-conditions-container">
-                    <p>${temp} F</p>
-                    <p>${weatherDescription}</p>
-                    <ul class="weather-misc-data">
-                        <li class="weather-data-misc-item">Feels Like: ${feelsLike} F</li>
-                        <li class="weather-data-mi sc-item">Humidity: ${humidity} F</li>
-                        <li class="weather-data-misc-item">Wind Speed: ${windSpeed}</li>
-                        <li class="weather-data-misc-item">Wind Direction: ${windDirection} deg</li>
+                    <p class="day-text">${temp}&#8457</p>
+                    <img src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="weather icon" class="weather-icons">
+                        <p class="day-text">${weatherDescription}</p>
+                    </img>
+                    <ul class="weather-misc-data" class="day-text">
+                        <li class="weather-data-misc-item day-text">Feels Like: ${feelsLike}&#8457</li>
+                        <li class="weather-data-mi sc-item day-text">Humidity: ${humidity}&#8457</li>
+                        <li class="weather-data-misc-item day-text">Wind Speed: ${windSpeed}</li>
+                        <li class="weather-data-misc-item day-text">Wind Direction: ${windDirection} deg</li>
                     </ul>
                 </figure>
             `;
@@ -93,11 +100,13 @@ weatherApp();
 
 let updateButton = document.querySelector('#select-location-button');
 updateButton.addEventListener('click', function(event) {
-    // currentDivNumber ++;
     let oldCurrentData = document.querySelector('#current-data');
     let updatedCity = document.querySelector('#city').value;
     let updatedState = document.querySelector('#state').value;
-    /*
+
+
+
+    /*////all below will replace code right below it
         if(updatedCity === not a city || updatedState === not a state) {
             update dom user and do not push or change anything
         } else {
@@ -138,7 +147,7 @@ updateButton.addEventListener('click', function(event) {
     `;
     const appendNewSevenDaySec = document.querySelector('#current-weather-section');
     appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
-    ////call fetch Data
+    ////Fetch data again for update
     weatherApp();
     // document.getElementById('select-location-button').addEventListener("click", function(event) {
     //      event.preventDefault();

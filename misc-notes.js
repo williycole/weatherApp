@@ -48,3 +48,24 @@
 //     ////Re runs weather app to fetch new data
 //     weatherData();
 // });
+
+
+//   /////UTC Time Conversion
+//   const offSet = data.city.timezone /3600;
+//   // console.log(offSet)////FOR TESTING
+//   const mins = new Date().getUTCMinutes();
+//   // console.log(mins);////FOR TESTING
+//   const dayNumber = new Date().getUTCDay();
+//   console.log(dayNumber)////FOR TESTING
+//   const year = new Date().getFullYear();
+//   const UTCYear = Math.trunc(year/100);
+//   // year.substring(2)
+//   // console.log(UTCYear);////FOR TESTING
+//   const month = new Date().getMonth();
+//   const date = new Date().getDate();
+//   // Date.UTC(year, month[, day[, hour[, minute[, second[, millisecond]]]]])
+//   const newDateTest = new Date(Date.UTC(year, month, 2, (-6), mins, 0));
+//   // 0, month, date, (12 + offSet +1), (mins), 13, 0
+//   console.log(newDateTest)////FOR TESTING
+//   ////const correctedTime = ((new Date().getHours() -12) + ':' + (new Date().getMinutes()) + (-6) + data.city.timezone);
+//   ////console.log(correctedTime);////FOR TESTING

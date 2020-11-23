@@ -23,8 +23,18 @@
  *****************************
  *
  */
-////-----Reset-----
+////-----Colors-----
+$light-yellow-A:#FBD5A6;
+$dark-purple-A: #2E217D;
+$dark-purple-B: #1E1D41;
+$light-purple-A: #917FD5;
+$light-purple-B: #795CED;
+$light-red-A:#BF2D74;
+$light-red-B:#761A65;
+$light-blue-A:#7AD8FE;
+$light-blue-B:#4DB5DF;
 
+////-----Reset-----
 * {
     padding:0;
     margin: 0;
@@ -34,11 +44,39 @@
     box-sizing: inherit;
 }
 
+.day-text {
+    color: $light-red-A;
+}
+
+
 /*****************************
  *   00. sections
  *****************************
  *
  */
+
+
+
+.weather-icons{
+    display: flex;
+    width: 2.5rem;
+}
+
+body {
+    // background-image: url(./pictures/projectPics/cityScape/NoTextDay.svg);
+    // background-image: url(./pictures/projectPics/cityScape/NoTextNight.svg);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
 
 ul {
     list-style: none;
@@ -54,6 +92,10 @@ ul {
 }
 
 #current-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 #seleciton-container {
@@ -61,11 +103,22 @@ ul {
     flex-direction: row;
 }
 
+#current-weather-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
 #current-conditions {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: $light-red-A;
+    color: $dark-purple-A;
+    width: 15rem;
 }
 
 
@@ -74,13 +127,13 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 5rem 0 0 0;
 }
 
 .seven-day-conditions-container {
     padding: 1rem;
     margin: 1rem;
-    color: white;
-    background: grey;
+    background: $dark-purple-A;
 }
 
 
