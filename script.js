@@ -24,11 +24,11 @@ const cnt = 7;
 let currentCity  = ['Memphis','Denver','Southaven', 'TEST']
 let currentState = ['TN','CO','MS', 'TEST']
 
-/////Time Conversion
-////UTC
-var d = new Date();
-var n = d.getUTCDate();
-console.log(n)
+
+
+
+
+
 
 
 
@@ -44,16 +44,22 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
     })
     .then(data => {
         console.log(data)////FOR TESTING
-        const timeZoneOffset = data.city.timezone / 3600;
-        console.log(timeZoneOffset);
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}</h1>
                 <h1 id="default-state">${currentState[0]}</h1>
                 <h1>${Math.trunc(data.list[0].main.temp)} F</h1>
+                <p id="time"></p>
             </di>
         `;
         document.querySelector('#current-conditions').insertAdjacentHTML('afterbegin', currentData);
+        /////UTC Time Conversion
+        // const correctedTime = ((new Date().getHours() -12) + ':' + (new Date().getMinutes()) + (-6) + data.city.timezone);
+        // console.log(correctedTime);////FOR TESTING
+        // const timeContainer =document.querySelector('#time');
+        // console.log(timeContainer)////FOR TESTING
+        // timeContainer.innerHTML = correctedTime;
+
         for(let i = 0; i < data.list.length; i++) {
             //   console.log(temp), console.log(data.list[i].dt_txt); ////FOR TESTING
             //   console.log(data.list[i]) ////FOR TESTING
