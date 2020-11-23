@@ -26,8 +26,9 @@ let currentState = ['TN','CO','MS', 'TEST']
 
 /////Time Conversion
 ////UTC
-// const UTC = new Date.UTC(hours:);
-// console.log(UTC)
+var d = new Date();
+var n = d.getUTCDate();
+console.log(n)
 
 
 
@@ -43,7 +44,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
     })
     .then(data => {
         console.log(data)////FOR TESTING
-        let timeZoneOffset = data.city.timezone;
+        const timeZoneOffset = data.city.timezone / 3600;
         console.log(timeZoneOffset);
         const currentData = `
             <div id="current-data">
