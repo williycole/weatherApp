@@ -21,6 +21,12 @@ const units = 'imperial';
 const cnt = 7;
 let currentCity  = ['Memphis','Denver','Southaven', 'TEST']
 let currentState = ['TN','CO','MS', 'TEST']
+
+
+
+
+
+
 ///Fetch for 7 Day Forcast
 function weatherApp() {
 fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&appid=${KEY}`)
@@ -32,13 +38,15 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         return response.json();
     })
     .then(data => {
-        const offSet = data.city.timezone /3600;
-        console.log(offSet)
-        const utcHours = new Date().getUTCHours();
-        console.log(utcHours);
-        const timeCorrection =  (utcHours) + (offSet);
-        console.log(timeCorrection);
 
+
+        ////Sets background for time of day
+        const offSet = data.city.timezone /3600;
+        // console.log(offSet)
+        const utcHours = new Date().getUTCHours();
+        // console.log(utcHours);
+        const timeCorrection =  (utcHours) + (offSet);
+        // console.log(timeCorrection);
         if (timeCorrection >= 18 || timeCorrection <= 6) {
             console.log('its night')
             // document.body.style.background = "purple";
@@ -50,22 +58,31 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         }
 
 
+        ////Arrays for Days
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        ////use different days arrays for different correct dates aka shfit stuff over based on correct date        const currentDay = data.list[i].dt;
+
+
+
         const currentWeatherDescription = data.list[0].weather[0].description.toUpperCase();/// all weather description
         const currentWeatherIcon = data.list[0].weather[0].icon;/// all weather description
         console.log(data)////FOR TESTING
         const currentData = `
             <div id="current-data">
-                <h1 id="default-city">${currentCity[0]}</h1>
-                <h1 id="default-state">${currentState[0]}</h1>
-                <h1>${Math.trunc(data.list[0].main.temp)}&#8457</h1>
-                <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="weather-icons">
+                <h1 id="default-city">${currentCity[0]}, ${currentState[0]}</h1>
+                <h1 id="current-day">DAY</h1>
+                <div id="conditions-div">
+                    <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="main-weather-icon"></img>
                     <p>${currentWeatherDescription}</p>
-                </img>
+                </div>
+                <h1 id="current-temp">${Math.trunc(data.list[0].main.temp)}&#8457</h1>
                 <p id="time"></p>
             </di>
         `;
-        document.querySelector('#current-conditions').insertAdjacentHTML('afterbegin', currentData);
-        for(let i = 1; i < data.list.length; i++) {
+        document.querySelector('#current-conditions').insertAdjacentHTML('afterend', currentData);
+
+        for(let i = 0; i < data.list.length; i++) {
+
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
             const weatherIcon = data.list[i].weather[0].icon;/// all weather description
@@ -74,23 +91,35 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
             const humidity = data.list[i].main.humidity;/// all humidity for days
             const windSpeed = data.list[i].wind.speed;/// all wind speed for days
             const windDirection = data.list[i].wind.deg;/// all wind direction
+
+            ////Date/Day handling
+            const makeDate = new Date();
+            const correctDay = 24 - makeDate.getUTCDate()
+            console.log(correctDay);
+
+
+
+
             const sevenDayData = `
                 <figure class="seven-day-conditions-container">
-                    <p class="day-text">${temp}&#8457</p>
+                    <h1 class="day-text sev-dy-txt">DAY</h1>
+                    <h2 class="day-text sev-dy-txt">${temp}&#8457</h2>
                     <img src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="weather icon" class="weather-icons">
-                        <p class="day-text">${weatherDescription}</p>
+                        <p class="day-text sev-dy-txt">${weatherDescription}</p>
                     </img>
-                    <ul class="weather-misc-data" class="day-text">
-                        <li class="weather-data-misc-item day-text">Feels Like: ${feelsLike}&#8457</li>
-                        <li class="weather-data-mi sc-item day-text">Humidity: ${humidity}&#8457</li>
-                        <li class="weather-data-misc-item day-text">Wind Speed: ${windSpeed}</li>
-                        <li class="weather-data-misc-item day-text">Wind Direction: ${windDirection} deg</li>
+                    <!--
+                    <ul class="weather-misc-data" class="day-text sev-dy-txt">
+                        <li class="weather-data-misc-item day-text sev-dy-txt">Feels Like: ${feelsLike}&#8457</li>
+                        <li class="weather-data-mi sc-item day-text sev-dy-txt">Humidity: ${humidity}&#8457</li>
+                        <li class="weather-data-misc-item day-text sev-dy-txt">Wind Speed: ${windSpeed}</li>
+                        <li class="weather-data-misc-item day-text sev-dy-txt">Wind Direction: ${windDirection} deg</li>
                     </ul>
+                    -->
                 </figure>
             `;
             document.querySelector('#seven-days-section').insertAdjacentHTML('afterbegin', sevenDayData);
         }
-        // console.log(data); /////FOR TESTING
+        // console.log(iCatch); /////FOR TESTING
     })
     .catch(error => {
         console.log(error);
@@ -149,9 +178,6 @@ updateButton.addEventListener('click', function(event) {
     appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
     ////Fetch data again for update
     weatherApp();
-    // document.getElementById('select-location-button').addEventListener("click", function(event) {
-    //      event.preventDefault();
-    // })
     console.log('test')////FOR TESTING
     event.preventDefault();
 });

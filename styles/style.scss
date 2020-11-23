@@ -12,11 +12,8 @@
  *
  *
  * 00. common, reset css, colors  & JS Style
- * 01. sectons
- * 02.
- * 03.
- * 04.
- * 05.
+ * 01. Rest of app syling
+ *
  *
 /*****************************
  *   00. common & reset css
@@ -36,6 +33,7 @@ $light-blue-B:#4DB5DF;
 
 ////-----Reset-----
 * {
+    font-family: 'Nunito', sans-serif;
     padding:0;
     margin: 0;
 }
@@ -44,31 +42,14 @@ $light-blue-B:#4DB5DF;
     box-sizing: inherit;
 }
 
-.day-text {
-    color: $light-red-A;
-}
-
-
-/*****************************
- *   00. sections
- *****************************
- *
- */
-
-
-
-.weather-icons{
-    display: flex;
-    width: 2.5rem;
-}
-
 body {
     // background-image: url(./pictures/projectPics/cityScape/NoTextDay.svg);
     // background-image: url(./pictures/projectPics/cityScape/NoTextNight.svg);
     background-position: center;
     background-size: cover;
+    background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 main {
@@ -76,6 +57,7 @@ main {
     flex-direction: column;
     justify-content: space-between;
     height: 100vh;
+    text-align: center;
 }
 
 ul {
@@ -83,9 +65,40 @@ ul {
     text-align: center;
 }
 
+input[type="text"], textarea, option, select, button {
+    background-color : $light-blue-B;
+    border: $light-red-A 1px solid;
+    padding: .2rem;
+    margin: .6rem;
+  }
+
+/*****************************
+ *   01. Rest of app syling
+ *****************************
+ *
+ */
+
+.day-text {
+    color: $light-red-A;
+}
+
+.main-weather-icon {
+    width: 5rem;
+}
+
+.weather-icons{
+    display: flex;
+    width: 2.5rem;
+}
+
+.attribute {
+    color:$light-red-B;
+    opacity: 40%;
+}
+
 #user-location-selection-form {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -97,10 +110,14 @@ ul {
     justify-content: center;
     align-items: center;
     text-align: center;
+    color: $light-red-A;
 }
-#seleciton-container {
+
+#conditions-div {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #current-weather-section {
@@ -108,7 +125,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
+    padding: 1rem;
 }
 
 #current-conditions {
@@ -116,29 +133,47 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $light-red-A;
-    color: $dark-purple-A;
+    color: $light-red-A;
     width: 15rem;
 }
 
 
 #seven-days-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;////have to reverse flex
+    flex-wrap: wrap-reverse;
     justify-content: center;
     align-items: center;
-    padding: 5rem 0 0 0;
+    margin:10rem 0 0 0;
 }
 
 .seven-day-conditions-container {
-    padding: 1rem;
-    margin: 1rem;
+    text-align: center;
+    width: 3.5rem;
+    height: 7rem;
+    padding: 1px;
+    margin: 1px;
     background: $dark-purple-A;
+    border: 1px solid $light-red-B;
+}
+
+.seven-day-conditions-container h1 {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.seven-day-conditions-container h2 {
+    font-size: .9rem;
+}
+.sev-dy-txt {
+    font-size: .65rem;
 }
 
 
+
 ////Desktop View
-@media (min-width:768px){
+@media (min-width:500px){
+    ////fix this if you need to
     #seven-days-section {
         display: flex;
         flex-direction: row-reverse;////have to reverse flex
@@ -148,10 +183,10 @@ ul {
     }
 }
 
-*
-.seven-day-conditions-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
+// .seven-day-conditions-container {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+// }
