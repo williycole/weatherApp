@@ -110,7 +110,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
           var dayName = allDays[d.getDay()];
           console.log(dayName)
 
-        for(let i = 0; i < data.list.length; i++) {
+        for(let i = 1; i < data.list.length; i++) {
             ////try this first from stack overflow
             // var d = new Date(data.list[i].dt * 1000); // to get the DateTime.
             // var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
