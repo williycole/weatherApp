@@ -98,6 +98,7 @@ input[type="text"], textarea, option, select, button {
 .attribute {
     color:$light-red-B;
     opacity: 40%;
+    font-size: 9px;
 }
 
 #user-location-selection-form {
@@ -152,10 +153,14 @@ input[type="text"], textarea, option, select, button {
 }
 
 .seven-day-conditions-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     width: 3.5rem;
-    height: 7rem;
-    padding: 1px;
+    height: 9rem;
+    // padding: .2rem;
     margin: 1px;
     background: $dark-purple-A;
     border: 1px solid $light-red-B;
@@ -188,9 +193,3 @@ input[type="text"], textarea, option, select, button {
 }
 
 
-// .seven-day-conditions-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-// }
