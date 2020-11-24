@@ -40,28 +40,28 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
     .then(data => {
 
 
-        ////Sets background for time of day
-        const offSet = data.city.timezone /3600;
-        // console.log(offSet)
-        const utcHours = new Date().getUTCHours();
-        // console.log(utcHours);
-        const timeCorrection =  (utcHours) + (offSet);
-        // console.log(timeCorrection);
-        if (timeCorrection >= 18 || timeCorrection <= 6) {
-            console.log('its night')
-            // document.body.style.background = "purple";
-            document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
-        } else {
-            console.log('its day')
-            // document.body.style.background = "yellow";
-            document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
-        }
 
 
+
+        ////------Testing for below
         ////Arrays for Days
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        // const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         ////use different days arrays for different correct dates aka shfit stuff over based on correct date        const currentDay = data.list[i].dt;
+        ////Arrays for Days Date/Day handling
+        const currentDayArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        ////get current day and use it to pick from other arrays you can choose to use based on that day that accounts for shifitn gn the day
+        var date = new Date();
+        var currentDayIndex = date.getUTCDay();
+        // console.log(currentDayIndex);
+        ////could use index to slice behind index and pop on array  then loop throug array in for loop to pick day corrected days from array
 
+        ////this might be to complex but you couldor maybe make objects and use the day as key value
+        //// ex. key, value
+            //// 0: Sunday,
+            //// 1: Monday,
+            //// 2 : Tuesday,
+            //// etc.....
+         ////------
 
 
         const currentWeatherDescription = data.list[0].weather[0].description.toUpperCase();/// all weather description
@@ -70,7 +70,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}, ${currentState[0]}</h1>
-                <h1 id="current-day">DAY</h1>
+                <h1 id="current-day">${currentDayArray[currentDayIndex]}</h1>
                 <div id="conditions-div">
                     <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="main-weather-icon"></img>
                     <p>${currentWeatherDescription}</p>
@@ -79,9 +79,44 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
                 <p id="time"></p>
             </di>
         `;
+        ////Determines the time of day for background change
+        const offSet = data.city.timezone /3600;
+        const utcHours = new Date().getUTCHours();
+        const timeCorrection =  (utcHours) + (offSet);
+        // console.log(offSet)
+        // console.log(utcHours);
+        // console.log(timeCorrection);
+          if (timeCorrection >= 18 || timeCorrection <= 6) {
+              console.log('its night')
+              // document.body.style.background = "purple";
+              document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
+            //   const changeToNight = document.querySelector("#current-data").innerHTML;
+            //   changeToNight.sytle.color = "#FBD5A6";
+
+
+
+          } else {
+              console.log('its day')
+              // document.body.style.background = "yellow";
+              document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
+          }
         document.querySelector('#current-conditions').insertAdjacentHTML('afterend', currentData);
 
+            //--------------
+          ////Testing for below
+          var allDays= ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+          var d = new Date(data.list[6].dt * 1000);
+          console.log(d)
+          var dayName = allDays[d.getDay()];
+          console.log(dayName)
+
         for(let i = 0; i < data.list.length; i++) {
+            ////try this first from stack overflow
+            // var d = new Date(data.list[i].dt * 1000); // to get the DateTime.
+            // var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
+            // console.log(dayName)
+            //--------------
+
 
             const temp =Math.trunc(data.list[i].main.temp);/// all days temps
             const weatherDescription = data.list[i].weather[0].description.toUpperCase();/// all weather description
@@ -91,18 +126,9 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
             const humidity = data.list[i].main.humidity;/// all humidity for days
             const windSpeed = data.list[i].wind.speed;/// all wind speed for days
             const windDirection = data.list[i].wind.deg;/// all wind direction
-
-            ////Date/Day handling
-            const makeDate = new Date();
-            const correctDay = 24 - makeDate.getUTCDate()
-            console.log(correctDay);
-
-
-
-
             const sevenDayData = `
                 <figure class="seven-day-conditions-container">
-                    <h1 class="day-text sev-dy-txt">DAY</h1>
+                    <!--<h1 class="day-text sev-dy-txt">${dayName}</h1>-->
                     <h2 class="day-text sev-dy-txt">${temp}&#8457</h2>
                     <img src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="weather icon" class="weather-icons">
                         <p class="day-text sev-dy-txt">${weatherDescription}</p>
@@ -127,6 +153,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
 }
 weatherApp();
 
+////Updating Location
 let updateButton = document.querySelector('#select-location-button');
 updateButton.addEventListener('click', function(event) {
     let oldCurrentData = document.querySelector('#current-data');
