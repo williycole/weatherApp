@@ -64,6 +64,7 @@ input[type="text"], textarea, option, select, button {
   border: #BF2D74 1px solid;
   padding: .2rem;
   margin: .6rem;
+  border-radius: 8px;
 }
 
 /*****************************
@@ -90,6 +91,10 @@ input[type="text"], textarea, option, select, button {
   color: #761A65;
   opacity: 40%;
   font-size: 9px;
+}
+
+#current-day {
+  width: 80%;
 }
 
 #user-location-selection-form {
@@ -127,6 +132,10 @@ input[type="text"], textarea, option, select, button {
   color: #BF2D74;
 }
 
+#current-temp {
+  font-size: 2rem;
+}
+
 #conditions-div {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -141,6 +150,10 @@ input[type="text"], textarea, option, select, button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#conditions-div p {
+  width: 30%;
 }
 
 #current-weather-section {
@@ -217,6 +230,7 @@ input[type="text"], textarea, option, select, button {
   margin: 1px;
   background: #2E217D;
   border: 1px solid #761A65;
+  border-radius: 8px;
 }
 
 .seven-day-conditions-container h1 {
@@ -249,6 +263,41 @@ input[type="text"], textarea, option, select, button {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    margin: 12rem 0 0 0;
+  }
+  .seven-day-conditions-container {
+    width: 5.5rem;
+    height: 11rem;
+    margin: 5px;
+    background: #2E217D;
+    border: 1px solid #761A65;
+  }
+  .seven-day-conditions-container h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
+  .seven-day-conditions-container h2 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #seven-days-section {
+    margin: 22.5rem 0 0 0;
+  }
+  .seven-day-conditions-container {
+    width: 7.5rem;
+    height: 11rem;
+    margin: 10px;
+    background: #2E217D;
+    border: 1px solid #761A65;
+  }
+  .seven-day-conditions-container h1 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .seven-day-conditions-container h2 {
+    font-size: 1.5rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

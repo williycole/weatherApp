@@ -70,6 +70,7 @@ input[type="text"], textarea, option, select, button {
     border: $light-red-A 1px solid;
     padding: .2rem;
     margin: .6rem;
+    border-radius: 8px;
   }
 
 /*****************************
@@ -101,6 +102,10 @@ input[type="text"], textarea, option, select, button {
     font-size: 9px;
 }
 
+#current-day {
+    width: 80%;
+}
+
 #user-location-selection-form {
     display: flex;
     flex-direction: row;
@@ -116,6 +121,11 @@ input[type="text"], textarea, option, select, button {
     align-items: center;
     text-align: center;
     color: $light-red-A;
+    // margin: 1rem 0 0 0;
+}
+
+#current-temp {
+    font-size: 2rem;
 }
 
 #conditions-div {
@@ -123,6 +133,10 @@ input[type="text"], textarea, option, select, button {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+#conditions-div p {
+    width: 30%;
 }
 
 #current-weather-section {
@@ -164,6 +178,7 @@ input[type="text"], textarea, option, select, button {
     margin: 1px;
     background: $dark-purple-A;
     border: 1px solid $light-red-B;
+    border-radius: 8px;
 }
 
 .seven-day-conditions-container h1 {
@@ -180,15 +195,56 @@ input[type="text"], textarea, option, select, button {
 
 
 
-////Desktop View
+////Tablet View
 @media (min-width:500px){
-    ////fix this if you need to
     #seven-days-section {
         display: flex;
         flex-direction: row-reverse;////have to reverse flex
         flex-wrap: wrap-reverse;
         justify-content: center;
         align-items: center;
+        margin: 12rem 0 0 0;
+    }
+
+    .seven-day-conditions-container {
+        width: 5.5rem;
+        height: 11rem;
+        margin: 5px;
+        background: $dark-purple-A;
+        border: 1px solid $light-red-B;
+    }
+
+    .seven-day-conditions-container h1 {
+        font-size: 1.8rem;
+        font-weight: 500;
+    }
+
+    .seven-day-conditions-container h2 {
+        font-size: 1rem;
+    }
+}
+////Desktop View
+@media (min-width:768px){
+    //fix this if you need to
+    #seven-days-section {
+        margin: 22.5rem 0 0 0;
+    }
+
+    .seven-day-conditions-container {
+        width: 7.5rem;
+        height: 11rem;
+        margin: 10px;
+        background: $dark-purple-A;
+        border: 1px solid $light-red-B;
+    }
+
+    .seven-day-conditions-container h1 {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .seven-day-conditions-container h2 {
+        font-size: 1.5rem;
     }
 }
 
