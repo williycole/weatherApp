@@ -128,7 +128,7 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
             const windDirection = data.list[i].wind.deg;/// all wind direction
             const sevenDayData = `
                 <figure class="seven-day-conditions-container">
-                    <!--<h1 class="day-text sev-dy-txt">${dayName}</h1>-->
+                    <h1 class="day-text sev-dy-txt">${dayName}</h1>
                     <h2 class="day-text sev-dy-txt">${temp}&#8457</h2>
                     <img src="http://openweathermap.org/img/w/${weatherIcon}.png" alt="weather icon" class="weather-icons">
                         <p class="day-text sev-dy-txt">${weatherDescription}</p>
