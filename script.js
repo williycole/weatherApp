@@ -70,7 +70,8 @@ fetch(`${URL}?q=${currentCity[0]}&${currentState[0]}&units=${units}&cnt=${cnt}&a
         const currentData = `
             <div id="current-data">
                 <h1 id="default-city">${currentCity[0]}, ${currentState[0]}</h1>
-                <h1 id="current-day">${currentDayArray[currentDayIndex]}</h1>
+                <!--<h1 id="current-day">${currentDayArray[currentDayIndex]}</h1>-->
+                <h1 id="current-day">Current Weather</h1>
                 <div id="conditions-div">
                     <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="main-weather-icon"></img>
                     <p>${currentWeatherDescription}</p>
