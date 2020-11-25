@@ -158,30 +158,3 @@ weatherApp();
 
 
 
-    /*////all below will replace code right below it
-        if(updatedCity === not a city || updatedState === not a state) {
-            update dom user and do not push or change anything
-        } else {
-            oldCurrentData.remove();
-            currentCity.unshift(updatedCity)
-            console.log(currentCity);////FOR TESTING
-            currentState.unshift(updatedState)
-            console.log(currentState);////FOR TESTING
-            let sevenDaysSection = document.querySelector('#seven-days-section');
-            ////Removes and Updates Dom With New Seven Day Section
-            sevenDaysSection.remove();
-            let newSevenDaySection = `
-                <section id="seven-days-section">
-                </section>
-            `;
-            const appendNewSevenDaySec = document.querySelector('#current-weather-section');
-            appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
-            ////call fetch Data
-             weatherApp();
-            // document.getElementById('select-location-button').addEventListener("click", function(event) {
-            //      event.preventDefault();
-            // })
-            console.log('test')////FOR TESTING
-            event.preventDefault();
-        }
-    */

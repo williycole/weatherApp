@@ -49,7 +49,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100vh;
+    // height: 100vh;
 }
 
 main {
@@ -175,7 +175,7 @@ input[type="text"], textarea, option, select, button {
     width: 3.5rem;
     height: 9rem;
     // padding: .2rem;
-    margin: 1px;
+    margin: 5px;
     background: $dark-purple-A;
     border: 1px solid $light-red-B;
     border-radius: 8px;
@@ -209,7 +209,7 @@ input[type="text"], textarea, option, select, button {
     .seven-day-conditions-container {
         width: 5.5rem;
         height: 11rem;
-        margin: 5px;
+        margin: 8px;
         background: $dark-purple-A;
         border: 1px solid $light-red-B;
     }
@@ -223,7 +223,7 @@ input[type="text"], textarea, option, select, button {
         font-size: 1rem;
     }
 }
-////Desktop View
+////More Tablets and Smaller Desktop View
 @media (min-width:768px){
     //fix this if you need to
     #seven-days-section {
@@ -233,7 +233,7 @@ input[type="text"], textarea, option, select, button {
     .seven-day-conditions-container {
         width: 7.5rem;
         height: 11rem;
-        margin: 10px;
+        margin: 14px;
         background: $dark-purple-A;
         border: 1px solid $light-red-B;
     }
@@ -248,4 +248,19 @@ input[type="text"], textarea, option, select, button {
     }
 }
 
+////Desktop View
+@media (min-width:950px){
+    .seven-day-conditions-container {
+        width: 9rem;
+        height: 9rem;
+        margin: 20px;
+        background: $dark-purple-A;
+        border: 1px solid $light-red-B;
+    }
+
+    #seven-days-section {
+        margin: 30rem 0 0 0;
+    }
+
+}
 

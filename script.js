@@ -45,24 +45,21 @@ console.log(data);
         const utcHours = new Date().getUTCHours();
         const timeCorrection =  (utcHours) + (offSet);
 ////FOR TESTING
-console.log(offSet);
-console.log(utcHours);
-console.log(timeCorrection);
-
-            if (timeCorrection >= 18 || timeCorrection <= 6) {
+// console.log(offSet);
+// console.log(utcHours);
+// console.log(timeCorrection);
+            const changeToNight = document.querySelector("#current-data");
+            if (timeCorrection >= 17 || timeCorrection <= 6) {
                 console.log('its night')
-                // document.body.style.background = "purple";
                 document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
-                //   const changeToNight = document.querySelector("#current-data").innerHTML;
-                //   console.log(changeToNight)
-                //   changeToNight.sytle.color = "#FBD5A6";
+                console.log(changeToNight)
             } else {
                 console.log('its day')
                 // document.body.style.background = "yellow";
                 document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
             }
         document.querySelector('#current-conditions').insertAdjacentHTML('afterend', currentData);
-        ////Updates location and arrys with data for current location
+        ////Updates location and arrys with data for current location as well as checks if valid city was input by user
         let updateArrays = document.querySelector('#select-location-button');
         updateArrays.addEventListener('click', function(event) {
         let oldCurrentData = document.querySelector('#current-data');
@@ -70,6 +67,36 @@ console.log(timeCorrection);
         let updatedState = document.querySelector('#state').value;
         let updatedLat = data.coord.lat;
         let updatedLon = data.coord.lon;
+
+        /*////all below will replace code right below it
+        if(updatedCity === not a city || updatedState === not a state) {
+            update dom user and do not push or change anything
+        } else {
+            oldCurrentData.remove();
+            currentCity.unshift(updatedCity)
+            console.log(currentCity);////FOR TESTING
+            currentState.unshift(updatedState)
+            console.log(currentState);////FOR TESTING
+            let sevenDaysSection = document.querySelector('#seven-days-section');
+            ////Removes and Updates Dom With New Seven Day Section
+            sevenDaysSection.remove();
+            let newSevenDaySection = `
+                <section id="seven-days-section">
+                </section>
+            `;
+            const appendNewSevenDaySec = document.querySelector('#current-weather-section');
+            appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
+            ////call fetch Data
+             weatherApp();
+            // document.getElementById('select-location-button').addEventListener("click", function(event) {
+            //      event.preventDefault();
+            // })
+            console.log('test')////FOR TESTING
+            event.preventDefault();
+        }
+    */
+
+
         oldCurrentData.remove();
         currentCity.unshift(updatedCity)
         currentState.unshift(updatedState)
