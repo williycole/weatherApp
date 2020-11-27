@@ -1,5 +1,5 @@
 ////dont uncomment out here copy then take to main script and test
-/////Redo with this in reacth
+/////Redo with this in react
 /////https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 ////chain then's together and use aysnc/await
 
