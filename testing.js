@@ -96,6 +96,8 @@ function currentWeather() {
 currentWeather();
 
 
+
+// ///if you can grab the tex ton the screen and place it here where lat an lon is you are good to go
 function sevenDayData(){
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latArray[0]}&lon=${lonArray[0]}&exclude=minutely,hourly,alerts&appid=${KEY}`)
     .then(response => {
