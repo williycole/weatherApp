@@ -1,6 +1,3 @@
-////dont uncomment out here copy then take to main script and test
-
-
 // const KEY = 'b3638aa8f784f7ed596080c809e2bd91';////tech901 key
 const URL = "https://api.openweathermap.org/data/2.5/";
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3';////personal key
