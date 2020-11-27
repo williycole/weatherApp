@@ -1,6 +1,7 @@
 ////dont uncomment out here copy then take to main script and test
 /////Redo with this in react
 /////https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+/////https://developers.google.com/web/fundamentals/primers/async-functions
 ////chain then's together and use aysnc/await
 
 

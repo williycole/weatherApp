@@ -1,6 +1,7 @@
 ////dont uncomment out here copy then take to main script and test
 /////Redo with this in react
 /////https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+/////https://developers.google.com/web/fundamentals/primers/async-functions
 ////chain then's together and use aysnc/await
 
 // const KEY = 'b3638aa8f784f7ed596080c809e2bd91';////tech901 key
