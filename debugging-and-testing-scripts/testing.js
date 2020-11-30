@@ -93,6 +93,7 @@ function currentWeather() {
         });
     })
     .catch(error => {
+        /////if  no data update dom with enter new location/ not a city
         console.log(error);
     });
 }
