@@ -206,7 +206,8 @@ input[type="text"], textarea, option, select, button {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin: 10rem 0 0 0;
+  -webkit-transition: ease-in-out 2s;
+  transition: ease-in-out 2s;
 }
 
 .seven-day-conditions-container {
@@ -227,7 +228,7 @@ input[type="text"], textarea, option, select, button {
   width: 3.5rem;
   height: 9rem;
   margin: 5px;
-  background: #2E217D;
+  background: #2d217de3;
   border: 1px solid #761A65;
   border-radius: 8px;
 }
@@ -262,13 +263,12 @@ input[type="text"], textarea, option, select, button {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    margin: 12rem 0 0 0;
   }
   .seven-day-conditions-container {
     width: 5.5rem;
     height: 11rem;
     margin: 8px;
-    background: #2E217D;
+    background: #2d217de3;
     border: 1px solid #761A65;
   }
   .seven-day-conditions-container h1 {
@@ -281,14 +281,11 @@ input[type="text"], textarea, option, select, button {
 }
 
 @media (min-width: 768px) {
-  #seven-days-section {
-    margin: 22.5rem 0 0 0;
-  }
   .seven-day-conditions-container {
     width: 7.5rem;
     height: 11rem;
     margin: 14px;
-    background: #2E217D;
+    background: #2d217de3;
     border: 1px solid #761A65;
   }
   .seven-day-conditions-container h1 {
@@ -305,11 +302,8 @@ input[type="text"], textarea, option, select, button {
     width: 9rem;
     height: 9rem;
     margin: 20px;
-    background: #2E217D;
+    background: #2d217de3;
     border: 1px solid #761A65;
-  }
-  #seven-days-section {
-    margin: 30rem 0 0 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

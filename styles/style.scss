@@ -22,7 +22,7 @@
  */
 ////-----Colors-----
 $light-yellow-A:#FBD5A6;
-$dark-purple-A: #2E217D;
+$dark-purple-A: #2d217de3;
 $dark-purple-B: #1E1D41;
 $light-purple-A: #917FD5;
 $light-purple-B: #795CED;
@@ -163,7 +163,7 @@ input[type="text"], textarea, option, select, button {
     flex-wrap: wrap-reverse;
     justify-content: center;
     align-items: center;
-    margin:10rem 0 0 0;
+    // margin:10rem 0 0 0;
     transition: ease-in-out 2s;
 }
 
@@ -204,7 +204,7 @@ input[type="text"], textarea, option, select, button {
         flex-wrap: wrap-reverse;
         justify-content: center;
         align-items: center;
-        margin: 12rem 0 0 0;
+        // margin: 12rem 0 0 0;
     }
 
     .seven-day-conditions-container {
@@ -227,9 +227,9 @@ input[type="text"], textarea, option, select, button {
 ////More Tablets and Smaller Desktop View
 @media (min-width:768px){
     //fix this if you need to
-    #seven-days-section {
-        margin: 22.5rem 0 0 0;
-    }
+    // #seven-days-section {
+    //     margin: 22.5rem 0 0 0;
+    // }
 
     .seven-day-conditions-container {
         width: 7.5rem;
@@ -259,9 +259,8 @@ input[type="text"], textarea, option, select, button {
         border: 1px solid $light-red-B;
     }
 
-    #seven-days-section {
-        margin: 30rem 0 0 0;
-    }
-
+    // #seven-days-section {
+    //     margin: 30rem 0 0 0;
+    // }
 }
 

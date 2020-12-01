@@ -43,18 +43,22 @@ function currentWeather() {
          const currentData = `
          <div id="current-data">
              <h1 id="default-city">${currentCity[0]}, ${currentState[0]}</h1>
-             <ul>
-                <li id="current-lat">${currentLat}</li>
-                <li id="current-lon">${currentLon}</li>
-             </ul>
-             <h1 id="current-day">Current Weather Conditions</h1>
+
+             <!--
+                <ul>
+                   <li id="current-lat">${currentLat}</li>
+                   <li id="current-lon">${currentLon}</li>
+                </ul>
+                <h1 id="current-day">Current Conditions</h1>
+             -->
+
              <div id="conditions-div">
                  <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="main-weather-icon"></img>
                  <p>${currentWeatherDescription}</p>
              </div>
              <h1 id="current-temp">${Math.round(currentTempF)}&#8457</h1>
              <p id="time"></p>
-         </di>
+         </div>
          `;
          ////Determines the time of day and sets the background image for night vs day
          const offSet = data.timezone /3600;
@@ -63,6 +67,12 @@ function currentWeather() {
          if (timeCorrection >= 17 || timeCorrection <= 6) {
              console.log('its night')
              document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
+             const changeColor = setTimeout(function(){
+                const currentData = document.querySelector('#current-data');
+                currentData.style.color = "#FBD5A6";
+               }, 0);////Gottem for my own amusement
+               console.log(changeColor)
+
          } else {
              console.log('its day')
              // document.body.style.background = "yellow";
