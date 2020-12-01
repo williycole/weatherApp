@@ -49,9 +49,9 @@ function currentWeather() {
                    <li id="current-lat">${currentLat}</li>
                    <li id="current-lon">${currentLon}</li>
                 </ul>
-                <h1 id="current-day">Current Conditions</h1>
-             -->
 
+             -->
+             <h1 id="current-day">Current Conditions</h1>
              <div id="conditions-div">
                  <img src="http://openweathermap.org/img/w/${currentWeatherIcon}.png" alt="weather icon" class="main-weather-icon"></img>
                  <p>${currentWeatherDescription}</p>
@@ -126,17 +126,15 @@ function sevenDayData(){
     .then(data => {
         ////FOR TESTING
         console.log('one call data below'),console.log(data);
-
-
-        ////---------------------Have to fix days-----------------------------------------
-        for(let i = 1; i < data.daily.length -2; i++) {////check this tomorrow for errors
+        ////--------------------------Keep an eye on days to make sure they work-----------------------------------------
+        for(let i = 1; i < data.daily.length -2; i++) {
         var allDays= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        var d = new Date(data.daily[i].dt * 100); // to get the DateTime.
+        var d = new Date(data.daily[i].dt * 1000); // to get the DateTime.
         ////FOR TESTING
         console.log(d)
         var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
         ////FOR TESTING
-        console.log(dayName)
+        // console.log(dayName)
         const daysCurrentTempK = (data.daily[i].temp.day)
         const daysCurrentTempF = (daysCurrentTempK - 273.15) * (9/5) + 32;
         const weatherDescription = data.daily[i].weather[0].description.toUpperCase();/// all weather description
