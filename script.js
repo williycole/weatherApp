@@ -127,7 +127,7 @@ function sevenDayData(){
         ////FOR TESTING
         console.log('one call data below'),console.log(data);
         ////--------------------------Keep an eye on days to make sure they work-----------------------------------------
-        for(let i = 1; i < data.daily.length -2; i++) {
+        for(let i = 1; i < data.daily.length -1; i++) {
         var allDays= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         var d = new Date(data.daily[i].dt * 1000); // to get the DateTime.
         ////FOR TESTING
