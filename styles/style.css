@@ -13,7 +13,7 @@
  *
  * 00. common, reset css, colors  & JS Style
  * 01. Rest of app syling
- *
+ * 02. Error handling
  *
 /*****************************
  *   00. common & reset css
@@ -310,6 +310,86 @@ input[type="text"], textarea, option, select, button {
     margin: .5%;
     background: #2d217de3;
     border: 1px solid #761A65;
+  }
+}
+
+/*****************************
+ *   02. Error handling
+ *****************************
+ *
+ */
+#error-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  margin: 2rem;
+  padding: .5rem;
+  background-color: #795CED;
+  border: dashed 3px #BF2D74;
+  border-radius: 5px;
+  height: 90vh;
+}
+
+#error-container h1 {
+  font-size: 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 2.5rem 1rem 1rem 1rem;
+  color: #BF2D74;
+  background: #FBD5A6;
+}
+
+#error-container h2 {
+  font-size: 1rem;
+  margin: 2.5rem 0;
+}
+
+#error-container a {
+  border: #BF2D74 2px solid;
+  border-radius: 5px;
+  background: #7AD8FE;
+  color: #761A65;
+  text-decoration: none;
+  padding: 1rem;
+}
+
+#error-container h2:hover {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+#error-container a:visited {
+  color: #BF2D74;
+}
+
+.error-img {
+  width: 65%;
+}
+
+@media (min-width: 730px) {
+  #error-container {
+    padding: 20%;
+  }
+  #error-container {
+    text-align: center;
+    padding: 1%;
+  }
+  .error-img {
+    width: 25%;
   }
 }
 /*# sourceMappingURL=style.css.map */

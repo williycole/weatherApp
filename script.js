@@ -18,21 +18,25 @@ let lonArray = [-90.05]
 function currentWeather() {
     fetch(`${URL}weather?q=${currentCity[0]},${currentState[0]},US&appid=${KEY}`)
     .then(response => {
-        if(!response.ok) {
-            console.log('you goofed');////FOR TESTING
-            console.log(currentCity);
-            document.querySelector('#seven-days-section').remove();
-            document.querySelector('#current-weather-section').remove();
-            const testText = `<h1>Whoops something seems to have gone wrong</h1>
-                              <h1>
-                                <a href="https://williycole.github.io/weatherApp/">Click Here To Try Again</a>
-                              </h1>
-                             `;
-            document.querySelector('.attribute').insertAdjacentHTML('beforebegin', testText);
-
-
-            throw Error("ERROR");
-        }
+            if(!response.ok || currentCity[0] === "") {
+                console.log('you goofed');////FOR TESTING
+                console.log(currentCity);
+                document.querySelector('#seven-days-section').remove();
+                document.querySelector('#current-weather-section').remove();
+                document.querySelector('.attribute').remove();
+                const testText = `
+                                <div id="error-container">
+                                    <h1>Whoops something seems to have gone wrong</h1>
+                                    <h2>
+                                        <a href="https://williycole.github.io/weatherApp/">Click Here To Try Again</a>
+                                    </h2>
+                                    <img class="error-img" src="./styles/pictures/rainingCatsAndDogs.svg">
+                                </div>
+                 `;
+                document.body.insertAdjacentHTML('afterbegin', testText);
+                document.body.style.background = "#795CED";
+                throw Error("ERROR");
+            }
         console.log(currentCity);////FOR TESTING
         return response.json();
     })

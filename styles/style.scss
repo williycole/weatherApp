@@ -13,7 +13,7 @@
  *
  * 00. common, reset css, colors  & JS Style
  * 01. Rest of app syling
- *
+ * 02. Error handling
  *
 /*****************************
  *   00. common & reset css
@@ -252,3 +252,75 @@ input[type="text"], textarea, option, select, button {
     }
 }
 
+
+
+/*****************************
+ *   02. Error handling
+ *****************************
+ *
+ */
+ #error-container {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     margin: 2rem;
+     padding: .5rem;
+     background-color: $light-purple-B;
+     border: dashed 3px $light-red-A;
+     border-radius: 5px;
+     height: 90vh;
+ }
+
+ #error-container h1 {
+     font-size: 1rem;
+     border-radius: 5px;
+     text-transform: uppercase;
+     padding: 1rem;
+     margin: 2.5rem 1rem 1rem 1rem;
+     color: $light-red-A;
+     background: $light-yellow-A;
+ }
+
+ #error-container h2 {
+    font-size: 1rem;
+    margin: 2.5rem 0;
+}
+
+ #error-container a {
+    border: $light-red-A 2px solid;
+    border-radius: 5px;
+    background: $light-blue-A;
+    color: $light-red-B;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+#error-container h2:hover {
+    transform: scale(.8);
+    transition: all .3s ease-in-out;
+}
+
+#error-container a:visited {
+    color: $light-red-A;
+}
+
+.error-img {
+    width: 65%;
+}
+
+@media (min-width:730px){
+    #error-container {
+        padding: 20%;
+    }
+
+    #error-container {
+        text-align: center;
+        padding: 1%;
+    }
+
+    .error-img {
+        width: 25%;
+    }
+}
