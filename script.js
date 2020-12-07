@@ -1,14 +1,10 @@
+////NOTES FOR FUTURE UPDATES/ FUTURE REACT APP
 ////dont uncomment out here copy then take to main script and test
-/////Redo with this in react
 /////https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 /////https://developers.google.com/web/fundamentals/primers/async-functions
 ////chain then's together and use aysnc/await
 
 
-
-
-
-// const KEY = 'b3638aa8f784f7ed596080c809e2bd91';////tech901 key
 const URL = "https://api.openweathermap.org/data/2.5/";
 const KEY = 'e70d740e3c3e8dcc214358600ed578f3';////personal key
 const units = 'imperial';
@@ -23,8 +19,21 @@ function currentWeather() {
     fetch(`${URL}weather?q=${currentCity[0]},${currentState[0]},US&appid=${KEY}`)
     .then(response => {
         if(!response.ok) {
+            console.log('you goofed');////FOR TESTING
+            console.log(currentCity);
+            document.querySelector('#seven-days-section').remove();
+            document.querySelector('#current-weather-section').remove();
+            const testText = `<h1>Whoops something seems to have gone wrong</h1>
+                              <h1>
+                                <a href="https://williycole.github.io/weatherApp/">Click Here To Try Again</a>
+                              </h1>
+                             `;
+            document.querySelector('.attribute').insertAdjacentHTML('beforebegin', testText);
+
+
             throw Error("ERROR");
         }
+        console.log(currentCity);////FOR TESTING
         return response.json();
     })
     .then(data => {
@@ -35,7 +44,6 @@ function currentWeather() {
         latArray.unshift(currentLat);
         lonArray.unshift(currentLon);
         // console.log(latArray), console.log(lonArray)
-
          const currentWeatherDescription = data.weather[0].description.toUpperCase();
          const currentWeatherIcon = data.weather[0].icon;
          const currentTempK = (data.main.temp);
@@ -58,27 +66,34 @@ function currentWeather() {
              </div>
              <h1 id="current-temp">${Math.round(currentTempF)}&#8457</h1>
              <p id="time"></p>
+             <div id="current-data-pic">
          </div>
          `;
-         ////Determines the time of day and sets the background image for night vs day
-         const offSet = data.timezone /3600;
-         const utcHours = new Date().getUTCHours();
-         const timeCorrection =  (utcHours) + (offSet);
-         if (timeCorrection >= 17 || timeCorrection <= 6) {
-             console.log('its night')
-             document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
-             const changeColor = setTimeout(function(){
-                const currentData = document.querySelector('#current-data');
-                currentData.style.color = "#FBD5A6";
-               }, 0);////Gottem for my own amusement
-               console.log(changeColor)
+         setTimeout(function changeBackground(){
+            ////Determines the time of day and sets the background image for night vs day
+            const offSet = data.timezone /3600;
+            const utcHours = new Date().getUTCHours();
+            const timeCorrection =  (utcHours) + (offSet);
+            if (timeCorrection >= 17 || timeCorrection <= 6) {
+                console.log('its night')
+                document.body.style.background = "#12094A";
+                setTimeout(function(){
+                   const currentData = document.querySelector('#current-data');
+                   const currentDataPicNight = document.querySelector('#current-data-pic');
+                   currentData.style.color = "#FBD5A6";
+                   currentDataPicNight.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextNight.svg')";
+                  }, 0);////Gottem for my own amusement example of what you learned about the even loop
+            } else {
+                setTimeout(function(){
+                    console.log('its day')
+                    const currentDataPicDay = document.querySelector('#current-data-pic');
+                     currentDataPicDay.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
+                     document.body.style.background = "#7AD8FE";
+                }, 0);////Gottem for my own amusement example of what you learned about the even loop
+            }
+            document.querySelector('#current-conditions').insertAdjacentHTML('afterend', currentData);
+         }, 0);
 
-         } else {
-             console.log('its day')
-             // document.body.style.background = "yellow";
-             document.body.style.backgroundImage = "url('./styles/pictures/cityScape/NoTextDay.svg')";
-         }
-        document.querySelector('#current-conditions').insertAdjacentHTML('afterend', currentData);
 
         let updateArrays = document.querySelector('#select-location-button');
         updateArrays.addEventListener('click', function(event) {
@@ -86,8 +101,8 @@ function currentWeather() {
         let updatedState = document.querySelector('#state').value;
         currentCity.unshift(updatedCity);
         currentState.unshift(updatedState);
-////****latArray.unshift(currentLat);/////dont use these unshifts here here its double dipping
-////****lonArray.unshift(currentLon);/////dont use these unshifts here here its double dipping
+        ////****latArray.unshift(currentLat);/////dont use these unshifts here here its double dipping
+        ////****lonArray.unshift(currentLon);/////dont use these unshifts here here its double dipping
         console.log(latArray), console.log(lonArray);
         let oldCurrentData = document.querySelector('#current-data');
         console.log(oldCurrentData)
@@ -102,7 +117,7 @@ function currentWeather() {
         const appendNewSevenDaySec = document.querySelector('#current-weather-section');
         appendNewSevenDaySec.insertAdjacentHTML('afterend', newSevenDaySection)
         currentWeather();
-        setTimeout(function(){  sevenDayData(); }, 1000);
+        setTimeout(function(){  sevenDayData(); }, 200);
         event.preventDefault();
         });
     })
@@ -119,27 +134,22 @@ function sevenDayData(){
         if(!response.ok) {
             throw Error("ERROR");
         }
-    ////FOR TESTING
-    // console.log(response);
+    // console.log(response);////FOR TESTING
         return response.json();
     })
     .then(data => {
-        ////FOR TESTING
-        console.log('one call data below'),console.log(data);
+        // console.log('one call data below'),console.log(data); ////FOR TESTING
         ////--------------------------Keep an eye on days to make sure they work-----------------------------------------
         for(let i = 1; i < data.daily.length -1; i++) {
         var allDays= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         var d = new Date(data.daily[i].dt * 1000); // to get the DateTime.
-        ////FOR TESTING
-        console.log(d)
+        // console.log(d); ////FOR TESTING
         var dayName = allDays[d.getDay()]; // It will give day index, and based on index we can get day name from the array.
-        ////FOR TESTING
-        // console.log(dayName)
+        // console.log(dayName) ////FOR TESTING
         const daysCurrentTempK = (data.daily[i].temp.day)
-        const daysCurrentTempF = (daysCurrentTempK - 273.15) * (9/5) + 32;
+        const daysCurrentTempF = (daysCurrentTempK - 273.15) * (9/5) + 32;////for temp conversions
         const weatherDescription = data.daily[i].weather[0].description.toUpperCase();/// all weather description
         const weatherIcon = data.daily[i].weather[0].icon;/// all weather description
-        // const loadIcon = `http://openweathermap.org/img/w/${weatherIcon}.png`;
         const humidity = data.daily[i].humidity;/// all humidity for days
         const sevenDayData = `
             <figure class="seven-day-conditions-container">

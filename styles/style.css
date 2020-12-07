@@ -131,6 +131,12 @@ input[type="text"], textarea, option, select, button {
   color: #BF2D74;
 }
 
+#current-data-pic {
+  background-size: contain;
+  width: 30rem;
+  height: 30rem;
+}
+
 #current-temp {
   font-size: 2rem;
 }
@@ -227,7 +233,7 @@ input[type="text"], textarea, option, select, button {
   text-align: center;
   width: 3.5rem;
   height: 9rem;
-  margin: 5px;
+  margin: 2px;
   background: #2d217de3;
   border: 1px solid #761A65;
   border-radius: 8px;
@@ -267,7 +273,7 @@ input[type="text"], textarea, option, select, button {
   .seven-day-conditions-container {
     width: 5.5rem;
     height: 11rem;
-    margin: 8px;
+    margin: 1% 5%;
     background: #2d217de3;
     border: 1px solid #761A65;
   }
@@ -284,7 +290,7 @@ input[type="text"], textarea, option, select, button {
   .seven-day-conditions-container {
     width: 7.5rem;
     height: 11rem;
-    margin: 14px;
+    margin: .5%;
     background: #2d217de3;
     border: 1px solid #761A65;
   }
@@ -301,7 +307,7 @@ input[type="text"], textarea, option, select, button {
   .seven-day-conditions-container {
     width: 9rem;
     height: 9rem;
-    margin: 20px;
+    margin: .5%;
     background: #2d217de3;
     border: 1px solid #761A65;
   }

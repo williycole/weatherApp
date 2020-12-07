@@ -43,8 +43,6 @@ $light-blue-B:#4DB5DF;
 }
 
 body {
-    // background-image: url(./pictures/projectPics/cityScape/NoTextDay.svg);
-    // background-image: url(./pictures/projectPics/cityScape/NoTextNight.svg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -78,11 +76,6 @@ input[type="text"], textarea, option, select, button {
  *****************************
  *
  */
-
-// .night-text {
-
-// }
-
 .day-text {
     color: $light-red-A;
 }
@@ -121,7 +114,13 @@ input[type="text"], textarea, option, select, button {
     align-items: center;
     text-align: center;
     color: $light-red-A;
-    // margin: 1rem 0 0 0;
+
+}
+////helps control the picture for night and day postion
+#current-data-pic {
+    background-size: contain;
+    width: 30rem;
+    height: 30rem;
 }
 
 #current-temp {
@@ -163,7 +162,6 @@ input[type="text"], textarea, option, select, button {
     flex-wrap: wrap-reverse;
     justify-content: center;
     align-items: center;
-    // margin:10rem 0 0 0;
     transition: ease-in-out 2s;
 }
 
@@ -175,8 +173,7 @@ input[type="text"], textarea, option, select, button {
     text-align: center;
     width: 3.5rem;
     height: 9rem;
-    // padding: .2rem;
-    margin: 5px;
+    margin: 2px;
     background: $dark-purple-A;
     border: 1px solid $light-red-B;
     border-radius: 8px;
@@ -210,7 +207,7 @@ input[type="text"], textarea, option, select, button {
     .seven-day-conditions-container {
         width: 5.5rem;
         height: 11rem;
-        margin: 8px;
+        margin: 1% 5%;
         background: $dark-purple-A;
         border: 1px solid $light-red-B;
     }
@@ -226,15 +223,10 @@ input[type="text"], textarea, option, select, button {
 }
 ////More Tablets and Smaller Desktop View
 @media (min-width:768px){
-    //fix this if you need to
-    // #seven-days-section {
-    //     margin: 22.5rem 0 0 0;
-    // }
-
     .seven-day-conditions-container {
         width: 7.5rem;
         height: 11rem;
-        margin: 14px;
+        margin: .5%;
         background: $dark-purple-A;
         border: 1px solid $light-red-B;
     }
@@ -254,13 +246,9 @@ input[type="text"], textarea, option, select, button {
     .seven-day-conditions-container {
         width: 9rem;
         height: 9rem;
-        margin: 20px;
+        margin: .5%;
         background: $dark-purple-A;
         border: 1px solid $light-red-B;
     }
-
-    // #seven-days-section {
-    //     margin: 30rem 0 0 0;
-    // }
 }
 
