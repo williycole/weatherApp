@@ -21,55 +21,61 @@
  *
  */
 ////-----Colors-----
-$light-yellow-A:#FBD5A6;
+$light-yellow-A: #fbd5a6;
 $dark-purple-A: #2d217de3;
-$dark-purple-B: #1E1D41;
-$light-purple-A: #917FD5;
-$light-purple-B: #795CED;
-$light-red-A:#BF2D74;
-$light-red-B:#761A65;
-$light-blue-A:#7AD8FE;
-$light-blue-B:#4DB5DF;
+$dark-purple-B: #1e1d41;
+$light-purple-A: #917fd5;
+$light-purple-B: #795ced;
+$light-red-A: #bf2d74;
+$light-red-B: #761a65;
+$light-blue-A: #7ad8fe;
+$light-blue-B: #4db5df;
 
 ////-----Reset-----
 * {
-    font-family: 'Nunito', sans-serif;
-    padding:0;
-    margin: 0;
+  font-family: "Nunito", sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-*, *::before, *::after {
-    box-sizing: inherit;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
 }
 
 body {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    width: 100%;
-    // height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  // height: 100vh;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  text-align: center;
 }
 
 ul {
-    list-style: none;
-    text-align: center;
+  list-style: none;
+  text-align: center;
 }
 
-input[type="text"], textarea, option, select, button {
-    background-color : $light-blue-B;
-    border: $light-red-A 1px solid;
-    padding: .2rem;
-    margin: .6rem;
-    border-radius: 8px;
-  }
+input[type="text"],
+textarea,
+option,
+select,
+button {
+  background-color: $light-blue-B;
+  border: $light-red-A 1px solid;
+  padding: 0.2rem;
+  margin: 0.6rem;
+  border-radius: 8px;
+}
 
 /*****************************
  *   01. Rest of app syling
@@ -77,250 +83,260 @@ input[type="text"], textarea, option, select, button {
  *
  */
 .day-text {
-    color: $light-red-A;
+  color: $light-red-A;
 }
 
 .main-weather-icon {
-    width: 5rem;
+  width: 5rem;
 }
 
-.weather-icons{
-    display: flex;
-    width: 2.5rem;
+.weather-icons {
+  display: flex;
+  width: 2.5rem;
 }
 
 .attribute {
-    color:$light-red-B;
-    opacity: 40%;
-    font-size: 9px;
+  color: $light-red-B;
+  opacity: 40%;
+  font-size: 9px;
 }
 
 #current-day {
-    width: 80%;
+  width: 80%;
 }
 
 #user-location-selection-form {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 #current-data {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: $light-red-A;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: $light-red-A;
 }
 ////helps control the picture for night and day postion
 #current-data-pic {
-    background-size: contain;
-    width: 30rem;
-    height: 30rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30rem;
+  height: 30rem;
 }
 
 #current-temp {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 #conditions-div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 #conditions-div p {
-    width: 30%;
+  width: 30%;
 }
 
 #current-weather-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
 #current-conditions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: $light-red-A;
-    width: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $light-red-A;
+  width: 15rem;
 }
 
+#seven-day-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
 
 #seven-days-section {
-    display: flex;
-    flex-direction: row-reverse;////have to reverse flex
-    flex-wrap: wrap-reverse;
-    justify-content: center;
-    align-items: center;
-    transition: ease-in-out 2s;
+  display: flex;
+  text-align: center;
+  flex-direction: column; ////have to reverse flex
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
 }
 
 .seven-day-conditions-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 3.5rem;
-    height: 9rem;
-    margin: 2px;
-    background: $dark-purple-A;
-    border: 1px solid $light-red-B;
-    border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 80%;
+  height: 9rem;
+  margin: 2px;
+  background: $dark-purple-A;
+  border: 2px solid $light-red-B;
+  border-radius: 8px;
 }
 
 .seven-day-conditions-container h1 {
-    font-size: 1rem;
-    font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .seven-day-conditions-container h2 {
-    font-size: .9rem;
+  font-size: 1.2rem;
 }
 .sev-dy-txt {
-    font-size: .65rem;
+  font-size: 1rem;
 }
-
-
 
 ////Tablet View
-@media (min-width:500px){
-    #seven-days-section {
-        display: flex;
-        flex-direction: row-reverse;////have to reverse flex
-        flex-wrap: wrap-reverse;
-        justify-content: center;
-        align-items: center;
-        // margin: 12rem 0 0 0;
-    }
+@media (min-width: 500px) {
+  .seven-day-conditions-container {
+    width: 50%;
+  }
 
-    .seven-day-conditions-container {
-        width: 5.5rem;
-        height: 11rem;
-        margin: 1% 5%;
-        background: $dark-purple-A;
-        border: 1px solid $light-red-B;
-    }
+  .seven-day-conditions-container h1 {
+    font-size: 1.8rem;
+    font-weight: 500;
+  }
 
-    .seven-day-conditions-container h1 {
-        font-size: 1.8rem;
-        font-weight: 500;
-    }
-
-    .seven-day-conditions-container h2 {
-        font-size: 1rem;
-    }
+  .seven-day-conditions-container h2 {
+    font-size: 1rem;
+  }
 }
 ////More Tablets and Smaller Desktop View
-@media (min-width:768px){
-    .seven-day-conditions-container {
-        width: 7.5rem;
-        height: 11rem;
-        margin: .5%;
-        background: $dark-purple-A;
-        border: 1px solid $light-red-B;
-    }
+@media (min-width: 768px) {
+  #seven-days-section {
+    display: flex;
+    flex-direction: row-reverse; ////have to reverse flex
+    text-align: center;
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+  }
 
-    .seven-day-conditions-container h1 {
-        font-size: 2rem;
-        font-weight: 500;
-    }
+  .seven-day-conditions-container {
+    width: 8rem;
+    height: 11rem;
+    margin: 0.5%;
+    background: $dark-purple-A;
+    border: 1px solid $light-red-B;
+  }
 
-    .seven-day-conditions-container h2 {
-        font-size: 1.5rem;
-    }
+  .seven-day-conditions-container h1 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+
+  .seven-day-conditions-container h2 {
+    font-size: 1.5rem;
+  }
 }
 
 ////Desktop View
-@media (min-width:950px){
-    .seven-day-conditions-container {
-        width: 9rem;
-        height: 9rem;
-        margin: .5%;
-        background: $dark-purple-A;
-        border: 1px solid $light-red-B;
-    }
+@media (min-width: 950px) {
+  .seven-day-conditions-container {
+    width: 9rem;
+    height: 11rem;
+    margin: 0.5%;
+    background: $dark-purple-A;
+    border: 1px solid $light-red-B;
+  }
 }
-
-
-
+@media (min-width: 1100px) {
+  #seven-days-section {
+    display: flex;
+    flex-direction: row-reverse; ////have to reverse flex
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    // margin: 12rem 0 0 0;
+  }
+}
 /*****************************
  *   02. Error handling
  *****************************
  *
  */
- #error-container {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     text-align: center;
-     margin: 2rem;
-     padding: .5rem;
-     background-color: $light-purple-B;
-     border: dashed 3px $light-red-A;
-     border-radius: 5px;
-     height: 90vh;
- }
-
- #error-container h1 {
-     font-size: 1rem;
-     border-radius: 5px;
-     text-transform: uppercase;
-     padding: 1rem;
-     margin: 2.5rem 1rem 1rem 1rem;
-     color: $light-red-A;
-     background: $light-yellow-A;
- }
-
- #error-container h2 {
-    font-size: 1rem;
-    margin: 2.5rem 0;
+#error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 2rem;
+  padding: 0.5rem;
+  background-color: $light-purple-B;
+  border: dashed 3px $light-red-A;
+  border-radius: 5px;
+  height: 90vh;
 }
 
- #error-container a {
-    border: $light-red-A 2px solid;
-    border-radius: 5px;
-    background: $light-blue-A;
-    color: $light-red-B;
-    text-decoration: none;
-    padding: 1rem;
+#error-container h1 {
+  font-size: 1rem;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 1rem;
+  margin: 2.5rem 1rem 1rem 1rem;
+  color: $light-red-A;
+  background: $light-yellow-A;
+}
+
+#error-container h2 {
+  font-size: 1rem;
+  margin: 2.5rem 0;
+}
+
+#error-container a {
+  border: $light-red-A 2px solid;
+  border-radius: 5px;
+  background: $light-blue-A;
+  color: $light-red-B;
+  text-decoration: none;
+  padding: 1rem;
 }
 
 #error-container h2:hover {
-    transform: scale(.8);
-    transition: all .3s ease-in-out;
+  transform: scale(0.8);
+  transition: all 0.3s ease-in-out;
 }
 
 #error-container a:visited {
-    color: $light-red-A;
+  color: $light-red-A;
 }
 
 .error-img {
-    width: 65%;
+  width: 65%;
 }
 
-@media (min-width:730px){
-    #error-container {
-        padding: 20%;
-    }
+@media (min-width: 730px) {
+  #error-container {
+    padding: 20%;
+  }
 
-    #error-container {
-        text-align: center;
-        padding: 1%;
-    }
+  #error-container {
+    text-align: center;
+    padding: 1%;
+  }
 
-    .error-img {
-        width: 25%;
-    }
+  .error-img {
+    width: 25%;
+  }
 }
