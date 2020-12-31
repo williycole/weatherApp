@@ -171,7 +171,7 @@ button {
 #seven-days-section {
   display: flex;
   text-align: center;
-  flex-direction: column; ////have to reverse flex
+  flex-direction: column-reverse; ////have to reverse flex
   flex-wrap: wrap-reverse;
   align-items: center;
   justify-content: center;

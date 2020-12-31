@@ -222,9 +222,9 @@ button {
   display: flex;
   text-align: center;
   -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
   -ms-flex-wrap: wrap-reverse;
       flex-wrap: wrap-reverse;
   -webkit-box-align: center;
